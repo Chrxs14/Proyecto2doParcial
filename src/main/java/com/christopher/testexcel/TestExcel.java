@@ -2,13 +2,13 @@ package com.christopher.testexcel;
 
 import com.aspose.cells.Workbook;
 import com.aspose.cells.Worksheet;
-import com.aspose.cells.Cells;
 import com.aspose.cells.Cell;
 import com.christopher.testexcel.Unidades.Actividad;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.text.DateFormat;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +19,7 @@ public class TestExcel {
         Object valorCeldasUnidad;
         Object valorCeldasContenido;
         Object valorCeldasFecha;
+        Date fechaUnidad = null;
         
         Object valorCeldasACD;
         Object valorCeldasACDactividad;
@@ -42,13 +43,6 @@ public class TestExcel {
 
         // Obtener la hoja uno del libro
         Worksheet worksheet = wb.getWorksheets().get(0); // Hoja uno tiene el índice 0
-
-        
-//        System.out.println("Celda de prueba: " + worksheet.getCells().get("A4").getStringValue());
-//        
-//        if(worksheet.getCells().get("A4").getStringValue().equals("")){
-//            System.out.println("true");
-//        }
         
         System.out.println("Unidades");
         int valor1 = 3;
@@ -59,110 +53,6 @@ public class TestExcel {
         
         int valor5 = 7;
         int valor6 = 8;
-        /**
-        do{
-            Cell celdaUnidad = worksheet.getCells().get("A" + valor1);
-            valorCeldasUnidad = celdaUnidad.getStringValue();
-            if(!(valorCeldasUnidad.equals(""))){
-                
-                Cell celdaContenido = worksheet.getCells().get("B" + valor1);
-                valorCeldasContenido = celdaContenido.getStringValue();
-                Cell celdaFecha = worksheet.getCells().get("F" + valor1);
-                valorCeldasFecha = celdaFecha.getStringValue();
-                
-                //Aprendizaje en Contacto con el Docente-----------------------------------------
-                Cell celdaACD = worksheet.getCells().get("C" + valor1);
-                valorCeldasACD = celdaACD.getStringValue();
-                
-                    //actividad
-                Cell celdaACDactividad = worksheet.getCells().get("C" + valor2);
-                valorCeldasACDactividad = celdaACDactividad.getStringValue();
-                    //tiempo de la actividad
-                Cell celdaACDtiempo = worksheet.getCells().get("D" + valor2);
-                valorCeldasACDtiempo = celdaACDtiempo.getStringValue();
-                    //evaluacion
-                Cell celdaACDevaluacion = worksheet.getCells().get("E" + valor2);
-                valorCeldasACDevaluacion = celdaACDevaluacion.getStringValue();    
-
-                System.out.println("Titulo de unidades: \n**" + valorCeldasUnidad);
-                System.out.println("Contenido de la unindad: \n****" + valorCeldasContenido);
-                System.out.println("Fecha estimada para presentacion de Unidad: " + valorCeldasFecha);
-                
-                
-                System.out.println("**** " + valorCeldasACD + " ****");
-                if(valorCeldasACDactividad.equals("")){
-                    System.out.println("***No hay actividad de " + valorCeldasACD + " asignada en esta unidad");
-                }else{
-                    System.out.println("****Actividades: \n--------" + valorCeldasACDactividad);
-                    System.out.println("--------Tiempo: " + valorCeldasACDtiempo + " Hora(s)");
-                    System.out.println("--------Evaluacion: " + valorCeldasACDevaluacion);
-                }
-                
-                //Aprendizaje práctico experimental-----------------------------------------	
-                
-                Cell celdaAPE = worksheet.getCells().get("C" + valor3);
-                valorCeldasAPE = celdaAPE.getStringValue();
-                
-                    //actividad
-                Cell celdaAPEactividad = worksheet.getCells().get("C" + valor4);
-                valorCeldasAPEactividad = celdaAPEactividad.getStringValue();
-                
-                    //tiempo de la actividad
-                Cell celdaAPEtiempo = worksheet.getCells().get("D" + valor4);
-                valorCeldasAPEtiempo = celdaAPEtiempo.getStringValue();
-                
-                    //evaluacion
-                Cell celdaAPEevaluacion = worksheet.getCells().get("E" + valor4);
-                valorCeldasAPEevaluacion = celdaAPEevaluacion.getStringValue();  
-                
-                //Aprendizaje práctico experimental		
-                System.out.println("**** " + valorCeldasAPE + " ****");
-                if(valorCeldasAPEactividad.equals("")){
-                    System.out.println("***No hay actividad de " + valorCeldasAPE + " asignada en esta unidad");
-                }else{
-                    System.out.println("****Actividades: \n--------" + valorCeldasAPEactividad);
-                    System.out.println("--------Tiempo: " + valorCeldasAPEtiempo + " Hora(s)");
-                    System.out.println("--------Evaluacion: " + valorCeldasAPEevaluacion);
-                }
-                
-                
-                //Aprendizaje autónomo-----------------------------------------	
-                
-                Cell celdaAA = worksheet.getCells().get("C" + valor5);
-                valorCeldasAA = celdaAA.getStringValue();
-                
-                    //actividad
-                Cell celdaAAactividad = worksheet.getCells().get("C" + valor6);
-                valorCeldasAAactividad = celdaAAactividad.getStringValue();
-                
-                    //tiempo de la actividad
-                Cell celdaAAtiempo = worksheet.getCells().get("D" + valor6);
-                valorCeldasAAtiempo = celdaAAtiempo.getStringValue();
-                
-                    //evaluacion
-                Cell celdaAAevaluacion = worksheet.getCells().get("E" + valor6);
-                valorCeldasAAevaluacion = celdaAAevaluacion.getStringValue();  
-                
-                //Aprendizaje práctico experimental		
-                System.out.println("**** " + valorCeldasAA + " ****");
-                if(valorCeldasAAactividad.equals("")){
-                    System.out.println("***No hay actividad de " + valorCeldasAA + " asignada en esta unidad");
-                }else{
-                    System.out.println("****Actividades: \n--------" + valorCeldasAAactividad);
-                    System.out.println("--------Tiempo: " + valorCeldasAAtiempo + " Hora(s)");
-                    System.out.println("--------Evaluacion: " + valorCeldasAAevaluacion);
-                }
-                
-                System.out.println("");
-            }
-            valor1 += 6;
-            valor2 += 6;
-            valor3 += 6;
-            valor4 += 6;
-            valor5 += 6;
-            valor6 += 6;
-        }while (!valorCeldasUnidad.equals(""));
-        **/
         
         do{
             Cell celdaUnidad = worksheet.getCells().get("A" + valor1);
@@ -173,10 +63,14 @@ public class TestExcel {
                 valorCeldasContenido = celdaContenido.getStringValue();
                 Cell celdaFecha = worksheet.getCells().get("F" + valor1);
                 valorCeldasFecha = celdaFecha.getStringValue();
+                fechaUnidad = new SimpleDateFormat("dd/MM/yyyy").parse((String)valorCeldasFecha);
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                String formattedDate = dateFormat.format(fechaUnidad);
+
                 
-                System.out.println("Titulo de unidades: \n**" + valorCeldasUnidad);
-                System.out.println("Contenido de la unindad: \n****" + valorCeldasContenido);
-                System.out.println("Fecha estimada para presentacion de Unidad: " + valorCeldasFecha);
+//                System.out.println("Titulo de unidades: \n**" + valorCeldasUnidad);
+//                System.out.println("Contenido de la unindad: \n****" + valorCeldasContenido);
+//                System.out.println("Fecha estimada para presentacion de Unidad: " + fechaUnidad);
                 
                 //Aprendizaje en Contacto con el Docente-----------------------------------------
                 Cell celdaACD = worksheet.getCells().get("C" + valor1);
@@ -266,7 +160,7 @@ public class TestExcel {
                 
                 Unidades unidad = new Unidades(
                 (String) valorCeldasUnidad, (String) valorCeldasContenido,
-                actividadesDeAprendizaje, (String) valorCeldasFecha);
+                actividadesDeAprendizaje, fechaUnidad, formattedDate);
                 listaUnidades.add(unidad);
                
             }
@@ -284,7 +178,7 @@ public class TestExcel {
         for (Unidades unidad : listaUnidades) {
             System.out.println("Nombre de la Unidad: " + unidad.getDescripcion());
             System.out.println("Contenido de la Unidad: " + unidad.getContenidos());
-            System.out.println("Fecha de la Unidad: " + unidad.getFecha());
+            System.out.println("Fecha de la Unidad: " + unidad.getformattedDate());
 
             System.out.println("Actividades de la Unidad:");
             for (Unidades.Actividad actividad : unidad.getActividadesDeAprendizaje().values()) {

@@ -1,27 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.christopher.testexcel;
 
 /**
  *
  * @author Chris
  */
-import java.util.HashMap;
+
+import java.util.Date;
 import java.util.Map;
 
 public class Unidades {
     private String descripcion;
     private String contenidos;
     private Map<String, Actividad> actividadesDeAprendizaje;
-    private String fecha;
+    private Date fecha;
+    private String formattedDate;
 
-    public Unidades(String descripcion, String contenidos, Map<String, Actividad> actividadesDeAprendizaje, String fecha) {
+    public Unidades(String descripcion, String contenidos, Map<String, Actividad> actividadesDeAprendizaje, Date fecha, String formattedDate) {
         this.descripcion = descripcion;
         this.contenidos = contenidos;
         this.actividadesDeAprendizaje = actividadesDeAprendizaje;
         this.fecha = fecha;
+        this.formattedDate = formattedDate;
     }
 
     // Getters y setters para acceder a las propiedades
@@ -50,12 +49,20 @@ public class Unidades {
         this.actividadesDeAprendizaje = actividadesDeAprendizaje;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+    
+    public String getformattedDate() {
+        return formattedDate;
+    }
+
+    public void setformattedDate(String formattedDate) {
+        this.formattedDate = formattedDate;
     }
 
     // Clase interna para representar las actividades de aprendizaje
@@ -97,32 +104,5 @@ public class Unidades {
             this.evaluacion = evaluacion;
         }
     }
-
-    // Método main para ejemplo de uso
-
-//    public static void main(String[] args) {
-//        Map<String, Actividad> actividadesDeAprendizaje = new HashMap<>();
-//        actividadesDeAprendizaje.put("actividadACD", new Actividad("Clases Expositiva Participativa Políticas y lineamientos del curso.", 2, "Preguntas y respuestas"));
-//        actividadesDeAprendizaje.put("actividadAPE", new Actividad("No hay actividad asignada", 2, "No hay actividad asignada"));
-//        actividadesDeAprendizaje.put("actividadAA", new Actividad("Investigación del tema: lectura y análisis de la Estructura de Datos, conceptos fundamentales", 4, "Tarea: Subir documento/diapositivas con tema investigado."));
-//
-//        Unidades unidad1 = new Unidades(
-//                "UNIDAD 1: Introducción a las estructuras de datos (TDA) con objetos, conceptos y definiciones.",
-//                "Introducción a las Estructuras de Datos",
-//                actividadesDeAprendizaje,
-//                "2-may-2023"
-//        );
-//
-//        System.out.println(unidad1.getDescripcion());
-//        System.out.println(unidad1.getContenidos());
-//        System.out.println(unidad1.getFecha());
-//        System.out.println("Actividades de aprendizaje:");
-//
-//        for (Actividad actividad : unidad1.getActividadesDeAprendizaje().values()) {
-//            System.out.println("- " + actividad.getActividad());
-//            System.out.println("  Tiempo: " + actividad.getTiempo() + " horas");
-//            System.out.println("  Evaluación: " + actividad.getEvaluacion());
-//        }
-//    }
 }
 
