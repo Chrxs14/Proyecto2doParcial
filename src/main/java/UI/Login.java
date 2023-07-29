@@ -1,5 +1,6 @@
 package UI;
 
+import java.awt.Color;
 import javax.swing.UIManager;
 
 /*
@@ -15,6 +16,8 @@ import javax.swing.UIManager;
 
 public class Login extends javax.swing.JFrame {
 
+    int xMouse, yMouse;
+    
     /**
      * Creates new form Login
      */
@@ -40,11 +43,14 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        loginPanel = new javax.swing.JPanel();
+        mainContentPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         usernameTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         userPasswordField = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         backGroundLabel = new javax.swing.JLabel();
@@ -52,6 +58,8 @@ public class Login extends javax.swing.JFrame {
         esquinaDerecha = new javax.swing.JLabel();
         esquinaDerechaBefore = new javax.swing.JLabel();
         esquinaIzquierdBefore = new javax.swing.JLabel();
+        toolBarPanel = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusable(false);
@@ -59,89 +67,188 @@ public class Login extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1116, 655));
         setMinimumSize(new java.awt.Dimension(1116, 655));
         setName("Sistema de Ayuda a Profesores"); // NOI18N
+        setUndecorated(true);
         setType(java.awt.Window.Type.POPUP);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        loginPanel.setBackground(new java.awt.Color(255, 255, 255));
+        loginPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setPreferredSize(new java.awt.Dimension(500, 300));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        mainContentPanel.setBackground(new java.awt.Color(255, 255, 255));
+        mainContentPanel.setPreferredSize(new java.awt.Dimension(500, 300));
+        mainContentPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chris\\Desktop\\Proyecto Ecturas de datos\\testExcel\\src\\main\\java\\Assets\\imgSap (1).png")); // NOI18N
         jLabel2.setFocusable(false);
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 310, 240));
+        mainContentPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 310, 240));
 
         usernameTextField.setBackground(new java.awt.Color(255, 255, 255));
         usernameTextField.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        usernameTextField.setForeground(new java.awt.Color(0, 0, 0));
+        usernameTextField.setForeground(new java.awt.Color(153, 153, 153));
         usernameTextField.setText("Usuario");
         usernameTextField.setToolTipText("");
         usernameTextField.setMargin(new java.awt.Insets(0, 20, 0, 20));
+        usernameTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                usernameTextFieldMousePressed(evt);
+            }
+        });
         usernameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameTextFieldActionPerformed(evt);
             }
         });
-        jPanel2.add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 234, 41));
+        mainContentPanel.add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, 234, 41));
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText("Contraseña");
+        mainContentPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, 210, -1));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Login");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 234, -1));
+        mainContentPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 234, -1));
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setText("Usuario");
+        mainContentPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 210, -1));
 
         userPasswordField.setBackground(new java.awt.Color(255, 255, 255));
         userPasswordField.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        userPasswordField.setForeground(new java.awt.Color(0, 0, 0));
-        userPasswordField.setText("jPasswordField1");
+        userPasswordField.setForeground(new java.awt.Color(153, 153, 153));
+        userPasswordField.setText("contrasena");
         userPasswordField.setMargin(new java.awt.Insets(0, 20, 0, 20));
-        jPanel2.add(userPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 234, 41));
+        userPasswordField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                userPasswordFieldMousePressed(evt);
+            }
+        });
+        mainContentPanel.add(userPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 234, 41));
 
         jButton1.setBackground(new java.awt.Color(132, 84, 234));
         jButton1.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Login");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 132, 41));
+        mainContentPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, 140, 60));
 
-        backGroundLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chris\\Desktop\\Proyecto Ecturas de datos\\testExcel\\src\\main\\java\\Assets\\Group 1.png")); // NOI18N
-        jPanel2.add(backGroundLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 530));
+        backGroundLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chris\\Desktop\\Proyecto Ecturas de datos\\testExcel\\src\\main\\java\\Assets\\Group 1 (2).png")); // NOI18N
+        mainContentPanel.add(backGroundLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 530));
 
         esquinaIzquierd.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chris\\Desktop\\Proyecto Ecturas de datos\\testExcel\\src\\main\\java\\Assets\\Ellipse 1.png")); // NOI18N
         esquinaIzquierd.setText("jLabel3");
-        jPanel2.add(esquinaIzquierd, new org.netbeans.lib.awtextra.AbsoluteConstraints(-330, -150, 600, 430));
+        mainContentPanel.add(esquinaIzquierd, new org.netbeans.lib.awtextra.AbsoluteConstraints(-330, -150, 600, 430));
 
         esquinaDerecha.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chris\\Desktop\\Proyecto Ecturas de datos\\testExcel\\src\\main\\java\\Assets\\Ellipse 2.png")); // NOI18N
-        jPanel2.add(esquinaDerecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 520, 420));
+        mainContentPanel.add(esquinaDerecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 520, 420));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 840, 530));
+        loginPanel.add(mainContentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 840, 530));
 
         esquinaDerechaBefore.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chris\\Desktop\\Proyecto Ecturas de datos\\testExcel\\src\\main\\java\\Assets\\Ellipse 2.png")); // NOI18N
-        jPanel1.add(esquinaDerechaBefore, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, 490, 480));
+        loginPanel.add(esquinaDerechaBefore, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, 490, 480));
 
         esquinaIzquierdBefore.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chris\\Desktop\\Proyecto Ecturas de datos\\testExcel\\src\\main\\java\\Assets\\Ellipse 1.png")); // NOI18N
         esquinaIzquierdBefore.setText("jLabel3");
-        jPanel1.add(esquinaIzquierdBefore, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, -100, 630, 470));
+        loginPanel.add(esquinaIzquierdBefore, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, -100, 630, 470));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 660));
+        toolBarPanel.setBackground(new java.awt.Color(255, 255, 255));
+        toolBarPanel.setPreferredSize(new java.awt.Dimension(200, 200));
+        toolBarPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                toolBarPanelMouseDragged(evt);
+            }
+        });
+        toolBarPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                toolBarPanelMousePressed(evt);
+            }
+        });
+        toolBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chris\\Desktop\\Proyecto Ecturas de datos\\testExcel\\src\\main\\java\\Assets\\Vector.png")); // NOI18N
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        toolBarPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, 50));
+
+        loginPanel.add(toolBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 60));
+
+        getContentPane().add(loginPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        if(usernameTextField.getText().equals("admin") && String.valueOf(userPasswordField.getPassword()).equals("admin")){
+            Home homeSAP = new Home();
+            homeSAP.setVisible(true);
+            this.dispose();
+        }else{
+            javax.swing.JOptionPane.showMessageDialog(this, "Error al Logear. Usuario y contraseña incorrecto: " + usernameTextField.getText() + " - " + String.valueOf(userPasswordField.getPassword()) );
+        }
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void usernameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameTextFieldActionPerformed
+
+    private void toolBarPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toolBarPanelMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_toolBarPanelMousePressed
+
+    private void toolBarPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toolBarPanelMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_toolBarPanelMouseDragged
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void usernameTextFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usernameTextFieldMousePressed
+        if(usernameTextField.getText().equals("Usuario")){
+            usernameTextField.setText("");
+            usernameTextField.setForeground(Color.black);
+        }
+        if(String.valueOf(userPasswordField.getPassword()).isEmpty()){
+            userPasswordField.setText("contraseña");
+            userPasswordField.setForeground(Color.gray);
+        }
+        
+    }//GEN-LAST:event_usernameTextFieldMousePressed
+
+    private void userPasswordFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userPasswordFieldMousePressed
+        if(String.valueOf(userPasswordField.getPassword()).equals("contrasena")){
+            userPasswordField.setText("");
+            userPasswordField.setForeground(Color.black);
+            
+        }
+        if(usernameTextField.getText().isEmpty()){
+            usernameTextField.setText("Usuario");
+            usernameTextField.setForeground(Color.gray);
+        }
+        
+    }//GEN-LAST:event_userPasswordFieldMousePressed
 
     /**
      * @param args the command line arguments
@@ -156,8 +263,13 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JPanel loginPanel;
+    private javax.swing.JPanel mainContentPanel;
+    private javax.swing.JPanel toolBarPanel;
     private javax.swing.JPasswordField userPasswordField;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
