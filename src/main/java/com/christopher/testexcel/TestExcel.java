@@ -1,9 +1,12 @@
 package com.christopher.testexcel;
 
+import UI.Login;
 import com.aspose.cells.Workbook;
 import com.aspose.cells.Worksheet;
 import com.aspose.cells.Cell;
 import com.christopher.testexcel.Unidades.Actividad;
+import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.text.DateFormat;
 
 import java.text.SimpleDateFormat;
@@ -12,6 +15,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.UIManager;
 
 public class TestExcel {
     
@@ -195,5 +199,15 @@ public class TestExcel {
 
             System.out.println();
         }
+        
+        try {
+            FlatMacDarkLaf.setup();
+              
+        } catch( Exception ex ) {
+            System.err.println( "Failed to initialize LaF" );
+        }
+        
+        Login loginFrame = new Login();
+        loginFrame.setVisible(true); 
     }
 }
