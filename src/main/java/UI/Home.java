@@ -4,6 +4,12 @@
  */
 package UI;
 
+import java.awt.BorderLayout;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Chris
@@ -16,6 +22,21 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        SetImageLabel(closeLabel, "src/main/java/Assets/close.png");
+        
+        cursosPanel cursosContentPanel =  new cursosPanel();
+        cursosContentPanel.setSize(880,550);
+        cursosContentPanel.setLocation(200,80);
+        
+        content.removeAll();
+        content.add(cursosContentPanel, BorderLayout.CENTER);
+    }
+    
+    private void SetImageLabel(JLabel labelName, String root){
+         ImageIcon image = new ImageIcon(root);
+         Icon icon  = new ImageIcon(image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
+         labelName.setIcon(icon);
+         this.repaint();
     }
 
     /**
@@ -27,20 +48,29 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        loginPanel = new javax.swing.JPanel();
+        homePanel = new javax.swing.JPanel();
         toolBarPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        topBar = new javax.swing.JPanel();
+        closeLabel = new javax.swing.JLabel();
+        content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
         setLocationByPlatform(true);
+        setName("Home"); // NOI18N
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1120, 660));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        loginPanel.setBackground(new java.awt.Color(255, 255, 255));
-        loginPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        homePanel.setBackground(new java.awt.Color(240, 233, 255));
+        homePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        toolBarPanel.setBackground(new java.awt.Color(255, 255, 255));
+        toolBarPanel.setBackground(new java.awt.Color(154, 138, 189));
+        toolBarPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         toolBarPanel.setPreferredSize(new java.awt.Dimension(200, 200));
         toolBarPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -54,51 +84,168 @@ public class Home extends javax.swing.JFrame {
         });
         toolBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chris\\Desktop\\Proyecto Ecturas de datos\\testExcel\\src\\main\\java\\Assets\\Vector.png")); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Log out");
+        toolBarPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("SAP");
+        toolBarPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 70, -1));
+
+        jLabel3.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Cursos");
+        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        toolBarPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 160, 60));
+
+        jLabel4.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Horarios");
+        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        toolBarPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 160, 70));
+
+        jLabel5.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Materias");
+        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
             }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel5MousePressed(evt);
+        });
+        toolBarPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 160, 70));
+
+        homePanel.add(toolBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 660));
+
+        topBar.setBackground(new java.awt.Color(240, 233, 255));
+        topBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 233, 255), 2));
+        topBar.setPreferredSize(new java.awt.Dimension(200, 200));
+        topBar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                topBarMouseDragged(evt);
             }
         });
-        toolBarPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, 50));
+        topBar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                topBarMousePressed(evt);
+            }
+        });
+        topBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        loginPanel.add(toolBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 70));
+        closeLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chris\\Desktop\\Proyecto Ecturas de datos\\testExcel\\src\\main\\java\\Assets\\close.png")); // NOI18N
+        closeLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        closeLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closeLabelMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                closeLabelMousePressed(evt);
+            }
+        });
+        topBar.add(closeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, -1));
 
-        getContentPane().add(loginPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 660));
+        homePanel.add(topBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 70));
+
+        content.setBackground(new java.awt.Color(221, 207, 250));
+        homePanel.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 880, 550));
+
+        getContentPane().add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void closeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseClicked
         System.exit(0);
-    }//GEN-LAST:event_jLabel5MouseClicked
+    }//GEN-LAST:event_closeLabelMouseClicked
 
     private void toolBarPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toolBarPanelMouseDragged
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x - xMouse, y - yMouse);
+        
     }//GEN-LAST:event_toolBarPanelMouseDragged
 
     private void toolBarPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toolBarPanelMousePressed
-        xMouse = evt.getX();
-        yMouse = evt.getY();
+
     }//GEN-LAST:event_toolBarPanelMousePressed
 
-    private void jLabel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MousePressed
+    private void closeLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMousePressed
         System.exit(0);
-    }//GEN-LAST:event_jLabel5MousePressed
+    }//GEN-LAST:event_closeLabelMousePressed
+
+    private void topBarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_topBarMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);        
+    }//GEN-LAST:event_topBarMouseDragged
+
+    private void topBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_topBarMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();       
+    }//GEN-LAST:event_topBarMousePressed
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        horariosPanel horariosContentPanel =  new horariosPanel();
+        horariosContentPanel.setSize(880,550);
+        horariosContentPanel.setLocation(200,80);
+        
+        content.removeAll();
+        content.add(horariosContentPanel, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        cursosPanel cursosContentPanel =  new cursosPanel();
+        cursosContentPanel.setSize(880,550);
+        cursosContentPanel.setLocation(200,80);
+        
+        content.removeAll();
+        content.add(cursosContentPanel, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        materiasPanel materiasContentPanel =  new materiasPanel();
+        materiasContentPanel.setSize(880,550);
+        materiasContentPanel.setLocation(200,80);
+        
+        content.removeAll();
+        content.add(materiasContentPanel, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel closeLabel;
+    private javax.swing.JPanel content;
+    private javax.swing.JPanel homePanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel loginPanel;
     private javax.swing.JPanel toolBarPanel;
+    private javax.swing.JPanel topBar;
     // End of variables declaration//GEN-END:variables
 }
