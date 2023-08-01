@@ -27,13 +27,15 @@ public class horariosPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         contentHorarios = new javax.swing.JPanel();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jCalendar2 = new com.toedter.calendar.JCalendar();
 
         setBackground(new java.awt.Color(221, 207, 250));
 
         contentHorarios.setBackground(new java.awt.Color(221, 207, 250));
         contentHorarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        contentHorarios.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 860, 530));
+
+        jCalendar2.setBackground(new java.awt.Color(255, 153, 204));
+        contentHorarios.add(jCalendar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 860, 530));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -60,6 +62,6 @@ public class horariosPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contentHorarios;
-    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JCalendar jCalendar2;
     // End of variables declaration//GEN-END:variables
 }
