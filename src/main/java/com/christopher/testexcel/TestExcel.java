@@ -5,17 +5,14 @@ import com.aspose.cells.Workbook;
 import com.aspose.cells.Worksheet;
 import com.aspose.cells.Cell;
 import com.christopher.testexcel.Unidades.Actividad;
-import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.text.DateFormat;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import javax.swing.UIManager;
+
 
 public class TestExcel {
     
@@ -157,10 +154,11 @@ public class TestExcel {
                 
                 
                 //Generar una instancia de la clase Unidad
-                Map<String, Actividad> actividadesDeAprendizaje = new HashMap<>();
-                actividadesDeAprendizaje.put("actividadACD", new Actividad((String) valorCeldasACDactividad, (String) valorCeldasACDtiempo, (String) valorCeldasACDevaluacion));
-                actividadesDeAprendizaje.put("actividadAPE", new Actividad((String) valorCeldasAPEactividad, (String) valorCeldasAPEtiempo, (String) valorCeldasAPEevaluacion));
-                actividadesDeAprendizaje.put("actividadAA", new Actividad((String) valorCeldasAAactividad, (String) valorCeldasAAtiempo, (String) valorCeldasAAevaluacion));
+                List<Actividad> actividadesDeAprendizaje = new ArrayList<>();
+                actividadesDeAprendizaje.add(new Actividad((String)valorCeldasACD, (String) valorCeldasACDactividad, (String) valorCeldasACDtiempo, (String) valorCeldasACDevaluacion));        
+                actividadesDeAprendizaje.add(new Actividad((String)valorCeldasAPE, (String) valorCeldasAPEactividad, (String) valorCeldasAPEtiempo, (String) valorCeldasAPEevaluacion));        
+                actividadesDeAprendizaje.add(new Actividad((String)valorCeldasAA, (String) valorCeldasAAactividad, (String) valorCeldasAAtiempo, (String) valorCeldasAAevaluacion));        
+                
                 
                 Unidades unidad = new Unidades(
                 (String) valorCeldasUnidad, (String) valorCeldasContenido,
@@ -182,18 +180,26 @@ public class TestExcel {
         for (Unidades unidad : listaUnidades) {
             System.out.println("Nombre de la Unidad: " + unidad.getDescripcion());
             System.out.println("Contenido de la Unidad: " + unidad.getContenidos());
-            System.out.println("Fecha de la Unidad: " + unidad.getformattedDate());
+            System.out.println("Fecha de la Unidad: " + unidad.getFormattedDate());
 
             System.out.println("Actividades de la Unidad:");
-            for (Unidades.Actividad actividad : unidad.getActividadesDeAprendizaje().values()) {
+            
+            for (Unidades.Actividad actividad : unidad.getActividadesDeAprendizaje()) {
                 if(actividad.getActividad().equals("")){
+                    System.out.println(" Tipo de Actividad: " + actividad.getTipoDeActividad());
                     System.out.println("- No hay actividad asignada" );
                     System.out.println("  Tiempo: " + actividad.getTiempo() + " hora(s)");
                     System.out.println("  Evaluación: ---");
                 }else{
+                    System.out.println(" Tipo de Actividad: " + actividad.getTipoDeActividad());
                     System.out.println("- " + actividad.getActividad());
                     System.out.println("  Tiempo: " + actividad.getTiempo() + " hora(s)");
-                    System.out.println("  Evaluación: " + actividad.getEvaluacion());
+                    
+                    if (actividad.getEvaluacion().startsWith("Tarea") || actividad.getEvaluacion().startsWith("Taller")) {
+                        System.out.println(actividad.getEvaluacion());
+                    } else {
+                        System.out.println("  Evaluación: " + actividad.getEvaluacion());
+                    }
                 }
             }
 

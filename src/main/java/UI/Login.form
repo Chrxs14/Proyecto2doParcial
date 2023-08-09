@@ -92,9 +92,6 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="logoSap">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Chris\Desktop\Proyecto Ecturas de datos\testExcel\src\main\java\Assets\imgSap (1).png"/>
-                </Property>
                 <Property name="focusable" type="boolean" value="false"/>
               </Properties>
               <Constraints>

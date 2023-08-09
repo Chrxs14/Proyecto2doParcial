@@ -35,7 +35,7 @@ public class horariosPanel extends javax.swing.JPanel {
         contentHorarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jCalendar2.setBackground(new java.awt.Color(255, 153, 204));
-        contentHorarios.add(jCalendar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 860, 530));
+        contentHorarios.add(jCalendar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 860, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

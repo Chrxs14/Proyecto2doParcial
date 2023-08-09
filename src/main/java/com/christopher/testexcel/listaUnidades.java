@@ -4,10 +4,26 @@
  */
 package com.christopher.testexcel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Chris
  */
 class listaUnidades {
-    
+    private List<Unidades> listaUnidades;
+
+    public listaUnidades() {
+        listaUnidades = new ArrayList<>();
+    }
+
+    public List<Unidades> getUnidades() {
+        return listaUnidades;
+    }
+
+    public void setProfesoresList(List<Unidades> listaUnidades) {
+        this.listaUnidades = listaUnidades;
+    }
+
 }

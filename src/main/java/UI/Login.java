@@ -1,7 +1,15 @@
 package UI;
 
+import com.aspose.cells.Cell;
+import com.aspose.cells.Workbook;
+import com.aspose.cells.Worksheet;
+import com.christopher.testexcel.Profesores;
+import com.christopher.testexcel.ProfesoresList;
+import com.christopher.testexcel.Session;
 import java.awt.Color;
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -21,11 +29,20 @@ import javax.swing.UIManager;
 public class Login extends javax.swing.JFrame {
 
     int xMouse, yMouse;
+    Profesores profesor = new Profesores("","","","");
+    private Object valorCeldaId_profesor;
+    private Object valorCeldaProfesor_name;
+    private Object valorCeldaProfesor_usuario;
+    private Object valorCeldaProfesor_pass;
+    private Object valorCelda_cabecera;
+    private List<Profesores> profesoresList = new ArrayList<>();
+    private String userLogin;
     
     /**
      * Creates new form Login
+     * @throws java.lang.Exception
      */
-    public Login() {        
+    public Login() throws Exception {        
         initComponents();
         InitStyles();
         this.setLocationRelativeTo(this);
@@ -34,7 +51,54 @@ public class Login extends javax.swing.JFrame {
         SetImageLabel(esquinaDerecha, "src/main/java/Assets/EllipseDer.png");
         SetImageLabel(closeLabel, "src/main/java/Assets/close.png");
         SetImageLabel(logoSap, "src/main/java/Assets/Logo.png");
+        initProfesor();
         
+    }
+    
+    private void initProfesor() throws Exception{
+        
+        
+        
+        // Cargar archivo de Excel
+        Workbook wb = new Workbook("Profesores_base.xlsx");
+
+        // Obtener la hoja uno del libro
+        Worksheet worksheet = wb.getWorksheets().get(0); // Hoja uno tiene el índice 0
+        
+        System.out.println("Profesores");
+        int valor1 = 1;
+        int valor2 =  2;
+        
+        
+        do{
+            Cell celdaCabecera = worksheet.getCells().get("A" + valor1);
+            valorCelda_cabecera = celdaCabecera.getStringValue();
+            Cell celdaId_profesor = worksheet.getCells().get("A" + valor2);
+            valorCeldaId_profesor = celdaId_profesor.getStringValue();
+            if(!(valorCeldaId_profesor.equals(""))){
+                
+                Cell celdaProfesor = worksheet.getCells().get("B" + valor2);
+                valorCeldaProfesor_name = celdaProfesor.getStringValue();
+                Cell celdaUsuario = worksheet.getCells().get("C" + valor2);
+                valorCeldaProfesor_usuario = celdaUsuario.getStringValue();
+                Cell celdaContrasena = worksheet.getCells().get("D" + valor2);
+                valorCeldaProfesor_pass = celdaContrasena.getStringValue();
+
+//                System.out.println("ProfesorId: " + valorCeldaId_profesor);
+//                System.out.println("-Profesor: " + valorCeldaProfesor_name);
+//                System.out.println("-Usuario profesor: " + valorCeldaProfesor_usuario);
+//                System.out.println("-Usuario contrasena: " + valorCeldaProfesor_pass);
+                
+                
+                profesor = new Profesores((String) valorCeldaId_profesor, (String) valorCeldaProfesor_name, (String) valorCeldaProfesor_usuario, (String) valorCeldaProfesor_pass);
+                profesoresList.add(profesor);
+                
+                
+            }
+            valor1 += 1;
+            valor2 += 1;
+        }while (!valorCelda_cabecera.equals(""));
+        profesor.setProfesoresList(profesoresList);
     }
     
     private void SetImageLabel(JLabel labelName, String root){
@@ -99,7 +163,6 @@ public class Login extends javax.swing.JFrame {
         mainContentPanel.setPreferredSize(new java.awt.Dimension(500, 300));
         mainContentPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        logoSap.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chris\\Desktop\\Proyecto Ecturas de datos\\testExcel\\src\\main\\java\\Assets\\imgSap (1).png")); // NOI18N
         logoSap.setFocusable(false);
         mainContentPanel.add(logoSap, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 310, 240));
 
@@ -215,11 +278,34 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(usernameTextField.getText().equals("admin") && String.valueOf(userPasswordField.getPassword()).equals("admin")){
-            Home homeSAP = new Home();
-            homeSAP.setVisible(true);
-            this.dispose();
-        }else{
+        String profe1 = "chrisoch" ;
+        String profe1Pass = "profesor1" ;
+        String profe2 = "fernandocast" ;
+        String profe2Pass = "profesor2" ;
+        boolean founded = false; 
+        
+            if(profe1.equals(usernameTextField.getText()) && profe1Pass.equals(String.valueOf(userPasswordField.getPassword()))){
+                Session usuarioLogin = new Session();
+                usuarioLogin.setUsuarioLogeado("Christopher Ochoa");
+                
+                HomeParalelos homeSAPchris = new HomeParalelos(usuarioLogin);
+                homeSAPchris.setVisible(true);
+                
+                this.dispose();                                
+                founded = true;
+            }
+            if(profe2.equals(usernameTextField.getText()) && profe2Pass.equals(String.valueOf(userPasswordField.getPassword()))){
+                Session usuarioLogin = new Session();
+                usuarioLogin.setUsuarioLogeado("Fernando Castro");
+                
+                HomeParalelos2 homeSAPfernando = new HomeParalelos2(usuarioLogin);
+                homeSAPfernando.setVisible(true);
+                
+                this.dispose();                                
+                founded = true;
+            }
+         
+        if(!founded){
             javax.swing.JOptionPane.showMessageDialog(this, "Error al Logear. Usuario y contraseña incorrecto: " + usernameTextField.getText() + " - " + String.valueOf(userPasswordField.getPassword()) );
         }
         
